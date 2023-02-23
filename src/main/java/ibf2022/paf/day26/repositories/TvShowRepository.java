@@ -20,6 +20,15 @@ public class TvShowRepository {
     @Autowired
     private MongoTemplate template;
 
+    /*
+	    db.tvshows.find({
+			type: { $regex: 'Animation', $options: 'i' }
+		})
+		.sort({ "rating.average": -1 })
+		.projection({ _id: 0, id: 1, name: 1, "rating.average": 1 })
+		.limit(20)
+	*/
+
     public List<Document> getShowsByType(String type) {
         return getShowsByType(type, 20, 0);
     }

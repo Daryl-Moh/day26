@@ -17,6 +17,14 @@ public class TvShowService {
     public List<TvShow> getShowsByType(String type){
         return tvRepo.getShowsByType(type)
             .stream()
+            /*
+			 .filter(v -> {
+				 try {
+					 TvShow.createSummary(v);
+					 return true;
+				 } catch (Exception ex) { return false; }
+			 })
+			 */
             .map(v -> TvShow.createSummary(v))
             .toList();
    
